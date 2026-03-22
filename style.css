@@ -1,12 +1,12 @@
 :root {
-    --bg-color: #ffffff;
-    --text-main: #000000;
-    --text-muted: #94a3b8;
-    --card-bg: rgba(255, 255, 255, 0.03);
-    --card-border: rgba(255, 255, 255, 0.08);
-    --primary: #8b5cf6;
-    --primary-hover: #7c3aed;
-    --secondary: #ec4899;
+    --bg-color: #f8fafc; /* Fundo agora é um branco-gelo muito leve */
+    --text-main: #1d1729; /* Texto escuro com um tom púrpura para harmonia */
+    --text-muted: #6a5e7a; /* Texto de apoio cinza-arroxeado */
+    --card-bg: rgba(255, 255, 255, 0.75); /* Fundo claro para o quadro de vidro */
+    --card-border: rgba(0, 0, 0, 0.08); /* Borda escurecida levemente para dar contorno no fundo branco */
+    --primary: #5b21b6; /* Roxo profundo e elegante (mais contraste no claro) */
+    --primary-hover: #4c1d95;
+    --secondary: #be185d; /* Cereja/Rosa escuro rico para harmonizar o gradiente */
 }
 
 * {
@@ -32,9 +32,9 @@ body {
     width: 40vw;
     height: 40vw;
     border-radius: 50%;
-    filter: blur(120px);
+    filter: blur(140px);
     z-index: -1;
-    opacity: 0.4;
+    opacity: 0.25; /* Menos brilho para não poluir o fundo branco */
     pointer-events: none;
 }
 
@@ -92,7 +92,7 @@ body {
 }
 
 .nav-links a:hover {
-    color: var(--text-main);
+    color: var(--primary); /* Hover do menu agora fica na cor roxa primária */
 }
 
 /* Main Content */
@@ -129,12 +129,12 @@ body {
 /* Glass Card */
 .glass-card {
     background: var(--card-bg);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--card-border);
     border-radius: 24px;
     padding: 2.5rem;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08); /* Sombra mais delicada e menos pesada (light mode style) */
     width: 100%;
 }
 
@@ -164,30 +164,33 @@ body {
 
 select {
     width: 100%;
-    padding: 1.1rem 1.2rem;
-    background: rgba(255, 255, 255, 0.04);
+    padding: 1.1rem 2.8rem 1.1rem 1.2rem; /* Espaço direito maior para não engolir a seta customizada */
+    text-overflow: ellipsis; /* Adiciona reticências "..." no fim se faltar espaço */
+    white-space: nowrap; /* Impede quebra de linha interna */
+    overflow: hidden; /* Corta o que sobrar de texto sob as reticências */
+    background: rgba(255, 255, 255, 0.4);
     border: 1px solid var(--card-border);
     border-radius: 14px;
     color: var(--text-main);
     font-size: 1rem;
     outline: none;
-    appearance: none; /* Removes default arrow in many browsers */
+    appearance: none; 
     cursor: pointer;
     transition: all 0.3s ease;
-    /* Custom arrow for select */
-    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2394a3b8%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    /* Custom arrow ajustada para cinza escuro para aparecer no fundo claro */
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2364748b%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
     background-repeat: no-repeat;
     background-position: right 1.2rem top 50%;
     background-size: 0.65rem auto;
 }
 
 select:focus, select:hover {
-    border-color: rgba(139, 92, 246, 0.5); /* var(--primary) but transparent */
-    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(139, 92, 246, 0.6); 
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 select option {
-    background: #0f172a;
+    background: #ffffff;
     color: var(--text-main);
 }
 
@@ -198,7 +201,7 @@ select option {
     border: none;
     border-radius: 14px;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: white;
+    color: white; /* O texto do botão principal se mantém branco pelo contraste lindo */
     font-size: 1.1rem;
     font-weight: 600;
     cursor: pointer;
@@ -211,14 +214,15 @@ select option {
 
 .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 25px -5px rgba(236, 72, 153, 0.5);
+    box-shadow: 0 10px 25px -5px rgba(236, 72, 153, 0.4); /* Sombra rosada menor */
 }
 
+/* O botão secundário ("Tentar Novamente") no modo claro agora ganha relevância sutil */
 .btn-secondary {
     padding: 1rem 2rem;
     border: 1px solid var(--card-border);
     border-radius: 12px;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(0, 0, 0, 0.03);
     color: var(--text-main);
     font-size: 1rem;
     font-weight: 500;
@@ -228,8 +232,8 @@ select option {
 }
 
 .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.06);
+    border-color: rgba(0, 0, 0, 0.15);
 }
 
 /* Suggestion Result */
@@ -260,7 +264,7 @@ select option {
     border-radius: 16px;
     overflow: hidden;
     height: 450px;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(0, 0, 0, 0.05); /* Cinza clarinho enquanto a img não carrega */
 }
 
 .result-image-wrapper img {
@@ -284,13 +288,14 @@ select option {
 }
 
 .tag {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(255, 255, 255, 0.9); /* Tag agora é branquinha e opaca em cima da imagem */
     backdrop-filter: blur(8px);
     padding: 0.5rem 1rem;
     border-radius: 20px;
     font-size: 0.85rem;
-    font-weight: 500;
-    color: white;
+    font-weight: 600;
+    color: var(--text-main); /* Escurece a letra na tag para contraste */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Sombra para não sumir sobre partes claras da foto */
 }
 
 .result-info {
@@ -323,21 +328,21 @@ select option {
     align-items: center;
     gap: 1.2rem;
     padding: 1.2rem;
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(0, 0, 0, 0.02); /* Fundo escurecido quase transparentemente (em cima do branco) */
     border: 1px solid var(--card-border);
     border-radius: 16px;
     transition: background 0.3s ease;
 }
 
 .item:hover {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(0, 0, 0, 0.05); /* Item escurece super pouquinho no hover (fica charmoso) */
 }
 
 .item-icon {
     width: 45px;
     height: 45px;
     border-radius: 12px;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.06);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -378,7 +383,7 @@ select option {
 
 @media (max-width: 480px) {
     .nav-links {
-        display: none; /* Hide on very small screens for simplicity */
+        display: none;
     }
     .hero-title {
         font-size: 2.2rem;
