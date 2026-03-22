@@ -12,7 +12,6 @@
     /* Variáveis específicas para transições sólidas para o Modo Claro */
     --shadow-main: rgba(0, 0, 0, 0.08);
     --select-bg: rgba(255, 255, 255, 0.4);
-    --select-arrow: %2364748b;
     --select-focus: rgba(255, 255, 255, 0.8);
     --select-option: #ffffff;
     --btn-sec-bg: rgba(0, 0, 0, 0.03);
@@ -43,7 +42,6 @@
     /* Variáveis Inversas Específicas */
     --shadow-main: rgba(0, 0, 0, 0.4);
     --select-bg: rgba(255, 255, 255, 0.04);
-    --select-arrow: %2394a3b8;
     --select-focus: rgba(255, 255, 255, 0.08);
     --select-option: #0f172a;
     --btn-sec-bg: rgba(255, 255, 255, 0.05);
