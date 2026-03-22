@@ -1,4 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Alternador de Tema (Dark/Light)
+    const themeToggle = document.getElementById('theme-toggle');
+    const rootEl = document.documentElement;
+    const savedTheme = localStorage.getItem('theme');
+    
+    // Recupera do HD do User o tema desejado, se não houver será light
+    if (savedTheme) {
+        rootEl.setAttribute('data-theme', savedTheme);
+    }
+    
+    // Ouve o Clique no Botão lua/sol e inverte a classe global
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            let currentTheme = rootEl.getAttribute('data-theme') || 'light';
+            let newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            rootEl.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+    }
+
     const form = document.getElementById('style-form');
     const resultSection = document.getElementById('suggestion-result');
     const btnReset = document.getElementById('btn-reset');
