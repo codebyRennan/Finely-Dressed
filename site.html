@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finely Dressed</title>
+</head>
+<body>
+    <div class="glow-blob top-left"></div>
+    <div class="glow-blob bottom-right"></div>
+
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <span class="gradient-text">Finely Dressed</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#generator">Como Funciona</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <section id="home" class="hero-section">
+            <h1 class="hero-title">O look ideal,<br>na palma da <span class="gradient-text">mão</span></h1>
+            <p class="hero-subtitle">Selecione o clima, a ocasião e deixe que o nosso app sugira a melhor combinação de peças para o seu dia e seu estilo.</p>
+        </section>
+
+        <section id="generator" class="glass-card main-generator">
+            <form id="style-form">
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label for="weather">Clima</label>
+                        <select id="weather" name="weather">
+                            <option value="quente">☀️ Quente (Acima de 25°C)</option>
+                            <option value="ameno">🌤️ Ameno (15°C a 24°C)</option>
+                            <option value="frio">❄️ Frio (Abaixo de 15°C)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="occasion">Ocasião</label>
+                        <select id="occasion" name="occasion">
+                            <option value="casual">Passeio / Casual</option>
+                            <option value="trabalho">Trabalho / Office</option>
+                            <option value="festa">Festa / Noite</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="style">Estilo</label>
+                        <select id="style" name="style">
+                            <option value="masculino">Masculino</option>
+                            <option value="feminino">Feminino</option>
+                            <option value="unissex">Unissex / Streetwear</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary">
+                    <span>Gerar Sugestão</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                </button>
+            </form>
+        </section>
+
+        <!-- Result Section (Hidden initially) -->
+        <section id="suggestion-result" class="suggestion-result hidden">
+            <div class="glass-card result-card">
+                <div class="result-image-wrapper">
+                    <img id="suggestion-image" src="" alt="Sugestão de Roupa">
+                    <div class="overlay-tags" id="suggestion-tags"></div>
+                </div>
+                <div class="result-info">
+                    <h2 id="suggestion-title">Sua Sugestão</h2>
+                    <p id="suggestion-desc">A combinação ideal aparecerá aqui.</p>
+                    <div class="items-list" id="suggestion-items">
+                        <!-- Items serão preenchidos pelo JS -->
+                    </div>
+                    <button class="btn-secondary" id="btn-reset">Tentar Novamente</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Finely Dressed. Criado para o seu estilo.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
