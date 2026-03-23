@@ -17,8 +17,100 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // === LÓGICA DA PÁGINA DE LOGIN ===
+    const loginForm = document.getElementById('login-form');
+
+    if (loginForm) {
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const errorBox = document.getElementById('login-error');
+        const errorMsg = document.getElementById('login-error-msg');
+
+        // Limita as tentativas de login para prevenir ataques de força bruta no front-end
+
+        const showError = (msg) => {
+            errorMsg.textContent = msg;
+            errorBox.classList.remove('hidden');
+        };
+
+        const clearError = () => {
+            errorBox.classList.add('hidden');
+            emailInput.classList.remove('input-error');
+            passwordInput.classList.remove('input-error');
+        };
+
+        const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            clearError();
+
+            // Verifica se está bloqueado por excesso de tentativas
+            const now = Date.now();
+            if (now < lockUntil) {
+                const secs = Math.ceil((lockUntil - now) / 1000);
+                showError(`Muitas tentativas. Aguarde ${secs}s antes de tentar novamente.`);
+                return;
+            }
+
+            const emailVal = emailInput.value.trim();
+            const passVal = passwordInput.value;
+
+            // Validações de formato
+            if (!emailVal) {
+                emailInput.classList.add('input-error');
+                showError('Preencha o campo de e-mail.');
+                return;
+            }
+            if (!isValidEmail(emailVal)) {
+                emailInput.classList.add('input-error');
+                showError('Formato de e-mail inválido.');
+                return;
+            }
+            if (!passVal) {
+                passwordInput.classList.add('input-error');
+                showError('Preencha o campo de senha.');
+                return;
+            }
+            if (passVal.length < 6) {
+                passwordInput.classList.add('input-error');
+                showError('A senha deve ter pelo menos 6 caracteres.');
+                return;
+            }
+
+            // === SIMULAÇÃO DE AUTENTICAÇÃO ===
+            // Em produção, substituir por uma chamada segura à API com HTTPS.
+            // NUNCA armazenar senhas em texto pleno no front-end.
+            const DEMO_USER = 'usuario@finely.com';
+            const DEMO_PASS = 'finely123';
+
+            attempts++;
+            sessionStorage.setItem('login_attempts', attempts);
+
+            if (emailVal === DEMO_USER && passVal === DEMO_PASS) {
+                // Login válido: zera tentativas e redireciona
+                sessionStorage.removeItem('login_attempts');
+                sessionStorage.removeItem('login_lock_until');
+                window.location.href = 'Finely-Dressed.html';
+            } else {
+                // Bloqueia após 5 tentativas erradas por 30 segundos
+                if (attempts >= 5) {
+                    const newLock = Date.now() + 30000;
+                    sessionStorage.setItem('login_lock_until', newLock);
+                    sessionStorage.setItem('login_attempts', '0');
+                    showError('Conta temporariamente bloqueada por 30s. Tente novamente em instantes.');
+                } else {
+                    showError(`E-mail ou senha incorretos. (${5 - attempts} tentativa(s) restante(s))`);
+                }
+                emailInput.classList.add('input-error');
+                passwordInput.classList.add('input-error');
+            }
+        });
+    }
+
     // === LÓGICA DA PÁGINA 1: FINELY DRESSED ===
     const form = document.getElementById('style-form');
+
     
     if (form) {
         const resultSection = document.getElementById('suggestion-result');
