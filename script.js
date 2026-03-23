@@ -236,13 +236,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (btnReset) {
             btnReset.addEventListener('click', () => {
-                // Redireciona para a página de expansão conforme requisitado
-                window.location.href = 'expansao.html';
+                // Redireciona para a página do closet conforme requisitado
+                window.location.href = 'closet.html';
             });
         }
     }
 
-    // === LÓGICA DA PÁGINA 2: EXPANSAO.HTML (Closet Virtual) ===
+    // === LÓGICA DA PÁGINA 2: CLOSET.HTML (Closet Virtual) ===
     const rec1 = document.getElementById('rec1-chosen');
     const rec2 = document.getElementById('rec2-collector');
     const rec3 = document.getElementById('rec3-closet');

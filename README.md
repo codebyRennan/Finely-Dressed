@@ -1,34 +1,61 @@
-# Finely Dressed
-## Um site que sugere roupas conforme mudanças climáticas e humor do(a) usuário(a).
+# 👔 Finely Dressed
 
-Com lógica estruturada para fazer análises e ter aproximação da sugestão que o(a) usuário(a) vai gostar.
+<div align="center">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5" />
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3" />
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" />
+</div>
 
----
+<br>
 
-### Visão Geral & Documentação Completa
-O **Finely Dressed** é uma aplicação frontend puramente idealizada sem a necessidade de processadores em backend para funcionar. Construída numa interface visual moderna (*Glassmorphism* & *Gradients*), ela dispõe de duas camadas/páginas de experiência.
+**Finely Dressed** é uma aplicação web de consultoria de moda pessoal interativa, desenvolvida para sugerir looks baseados em variáveis climáticas, ocasiões e estilos. O projeto foca em oferecer uma experiência premium ao usuário interligando interfaces de *Glassmorphism*, temas dinâmicos e gamificação.
 
-1. **O Formulário Principal (`Finely-Dressed.html`)**: Sua base de entrada. O usuário escolhe no Select as temperaturas atreladas ao humor ou formalidade do roteiro. Por fim, uma estrutura de base de dados estática Javascript intercepta e sugere em um Glass Card o outfit perfeitamente modelado para o dia.
-2. **O Closet Virtual (`expansao.html`)**: Tela conectada pelo botão "Expanda Suas Sugestões". É onde o gamification acontece. Você interage empilhando caixas do seu guarda-roupa fonte até as suas seleções pré-idealizadas usando tecnologia nativa **Drag and Drop**. Como suporte pleno à navegação por touch (mobile friendly), as interações foram enraizadas também no "Click-to-move". Ou seja: clicou, espelhou a roupa na tela! Retângulos dinâmicos interceptam a devolução das peças. O revelador de Estilos oculto e um botão simulado de Reload variam o output final da tela.
-
-✅ **Acessibilidade Universal Escura/Clara:** O botão de Sol/Lua implementado intercepta a classe root, modificando ativamente o CSS e transitando o site em Modo Claro e Escuro. O Javascript salva imediatamente os dados no ambiente do "Local Storage".
-
----
-
-### Diagnóstico de Variáveis e Classes Não-Usadas (Limpeza)
-
-* **HTML (`Finely-Dressed.html`)**: O esqueleto está perfeitamente sucinto. Todo atributo, ID e classe listados integram e interagem diretamente com os componentes visuais ou com os chamados lógicos. O código está livre de lixos obsoletos.
-* **JavaScript (`script.js`)**: O JavaScript lida com dezenas de manipulações diretas na DOM. Não existe nenhuma constante de array ou objeto que esteja instanciada ocupando espaço de processamento sem real execução. Tudo tem sua função em tempo real.
-* **CSS (`style.css`)**: **Limpeza realizada**. Foram identificadas e removidas as variáveis mortas de `--select-arrow` (`%2364748b`) nos blocos globais (protótipos esquecidos pela formatação das backgrounds vectoriales imersas nativamente). A exclusão reduziu a redundância.
+Construído inteiramente em **Frontend Puro (Vanilla JS)** — sem o uso de bibliotecas de componentes, frameworks (React/Vue/Angular) ou dependências externas pesadas —, o projeto destaca o domínio e alta perfomance da linguagem fundamental da web combinada a designs extremamente sofisticados.
 
 ---
 
-### Testes de Portabilidade e Erro: "Na minha máquina funciona"
+## 🚀 Funcionalidades Principais por Módulo
 
-Problemas críticos clássicos de Deploys onde aplicações que rodam na máquina do criador local e quebram no celular da equipe foram 100% estagnados de antemão.
+### 1. Sistema Dinâmico de Sugestões (`Finely-Dressed.html`)
+A página principal atua como o motor do aplicativo. 
+- **Lógica de Decisão:** O usuário alimenta um formulário com o estado climático atual, a ocasião e o seu humor/estilo.
+- **Renderização Dinâmica:** Um algoritmo intercala a submissão, cruza as combinações exigidas e manipula a DOM instantaneamente para exibir aos olhos do usuário uma moldura final (Glass Card). O card retorna uma imagem em alta resolução e a listagem técnica das peças que formam o "traje selecionado".
 
-**Defesas implementadas na Aplicação:**
-1. **Fallback Mobile de Click Mode:**  Celulares Android e iPhones frequentemente bugam nas APIs limpas de "*Drag and Drop*" nativa se empilhados com scroll. Como contorno 100% responsivo, criamos o *Fallback*: o que seria deslizado usando o mouse agora é magicamente transacionado **somente no Tocar (onclick) da mesma tag**, fazendo os quadradinhos pularem entre o menu e os armários dinamicamente na tela mobile de forma limpa. A Navbar não soma mais com Media Queries negativas no celular, garantindo os botões flutuando flexíveis em Wrap Grid abaixo do cabeçalho.
-2. **Pathings Relacionais Dinâmicos:** Nenhuma raiz do site tenta cavar HD local procurando fotos. Imagens em Grid demandam links portados direto das pontas seguras da web (Unsplash Cloud Content). O site vive em um Drive ou num celular de forma isenta.
-3. **Imunizador OS (Case-Sensitivity):** Linux enxerga e colapsa com diferenças de caixas altas no build de subida (`Script.js` e `script.js` são conflitantes). Fechamos amarrações literais e litúrgicas pra que todas as declarações sigam lowercase universais.
-4. **Isolamento de Segurança CORS HTTP Node.js:** Como estruturamos sem o tag type modular `<module>`, todo o JS processa o App sem bloqueio do navegador (erro que impeditiva testadores remotos que clicassem duas vezes no arquivo com terminação `file:///` para ver a arte). Não se faz necessário montar Node Hosts locais para visualizar o trabalho em grupo!
+### 2. Closet Virtual Gamificado (`closet.html`)
+Uma extensão interativa em forma de tabuleiros de *Drop Zone* para que o(a) usuário(a) gerencie suas próprias roupas de maneira lúdica.
+- **Drag & Drop HTML5 API:** As Caixas de visualização do closet de origem são seguráveis e transportáveis dinâmicamente soltas pela tela até o painel de montagem final.
+- **Fallback Cross-Device Interativo:** Celulares costumam travar animações literais nativas de ponteiro quando o dedo tenta arrastar algo pesado nativo em HTML. Para garantir o suporte perfeitamente responsivo, ativei Fallbacks nos eventListeners: clicar na peça em tela fina de smartphone instantaneamente arremessa a caixa bidirecionalmente pelo sistema como se tivesse sido carregada nos braços.
+- **CSS Grid e UX Components:** Os blocos de itens são travados em malha simétrica 1:1 para ficarem simetricamente quadrados independente de quantos blocos estejam dentro da Fileira Origem. Toasts efêmeros temporizados reagem a apagamentos em massa dando opções ativas de botão para `Undo` (Desfazer).
+
+### 3. Login com Segurança Client-Side (`login.html`)
+Apresenta um layout seguro blindado por checagens reativas de interface, pronto para escalar.
+- **Validações DOM:** Checagens formativas nativas com auxílio JS impedindo burla de formatação por parte do usuário (email restritivo, preenchimento ativo e senhas minúsculas bloqueadas).
+- **Time Out Defense (Anti-Brute Force):** O sessionStorage mapeia todas as inserções tentadas erroneamente. Após cinco falhas de login o formulário é petrificado por intervalo punitivo (30s) sem demandar banco de dados server-side pra reprimir enchentes de rede (Flooding).
+- Ocultamento seguro nativo dos códigos de digitação.
+
+---
+
+## 💻 Destaques Técnicos & Engenharia Front-end
+
+O projeto exalta práticas de vanguarda que o blindam contra falhas de renderização em hospedagens diversas e a famosa síndrome *"Works on my Machine"* (Funcionava antes no meu Computador). Tudo rodará e abrirá independente do contexto de host (Vercel, GitHub Pages) ou abrindo direto pelo Pendrive/PC.
+
+*   🌗 **Dark / Light Mode Nativo via Set-Attributes:** Controle da iluminação inteira do site comandado num único Toggle da Navbar atrelado a root `<html data-theme="dark">`. As refrações dependem integralmente de blocos lógicos de **CSS Variables Globais (--var)**; ou seja: uma re-renderização universal limpa instantânea de centenas de classes com duas linhas de alteração nativa no script, banindo duplicação colossal de CSS.
+*   💾 **Persistência de Estado Local:** Integração modular com a memória Cache do navegador Web (`localStorage`), garantindo imunidade de escolhas aos reloads da tela ou saltos para outras abas. O site reaparecerá no tom setado previamente.
+*   🎨 **Glassmorphism Pattern:** Design com forte viés de futurismo estético e harmonia baseada em *UI/UX Clean*. Propriedades dinâmicas de refrações translucidas (`backdrop-filter`) contornam cards opacos para evidenciar o papel de parede escuro/claro que engloba a aplicação com requinte avançado.
+*   📱 **Arquitetura Totalmente Responsiva:** Estruturas engarrafantes como `display: none` foram substituídas por redes inteligentes baseadas nas reações encolhíveis do **Flex-Wrap & Grids**. Em qualquer tablet ou smartphone, as barras laterais, textos gradientes (`webkit-text-fill`) e cartões adaptam sua colagem visual caindo amigavelmente por quebra de linha visual.
+
+---
+
+## 🛠 Como Executar / Testar na sua Máquina
+
+Isento de pesados empacotadores (Node, NPM, Webpack), rode-o instataneamente:
+
+1. Clone o projeto de repositório de versão.
+2. Inicie o arquivo puramente através de duplo-clique no indexador `Finely-Dressed.html`. Seu navegador padrão cuidará do resto isoladamente!
+
+*(Acesso prévio de Demonstração fixado no arquivo de script para testes de login):*
+> - Usuário: `usuario@finely.com`
+> - Senha: `finely123`
+
+---
+*Feito com 💡 criatividade, dedicação acadêmica estrita de conceitos e foco na beleza fundamental do código estático puro por Rennan.*
