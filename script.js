@@ -26,7 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const errorBox = document.getElementById('login-error');
         const errorMsg = document.getElementById('login-error-msg');
 
-        // Limita as tentativas de login para prevenir ataques de força bruta no front-end
+        // Limita tentativas para prevenir força bruta no front-end
+        let attempts = parseInt(sessionStorage.getItem('login_attempts') || '0');
+        let lockUntil = parseInt(sessionStorage.getItem('login_lock_until') || '0');
 
         const showError = (msg) => {
             errorMsg.textContent = msg;
@@ -111,7 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // === LÓGICA DA PÁGINA 1: FINELY DRESSED ===
     const form = document.getElementById('style-form');
 
-    
     if (form) {
         const resultSection = document.getElementById('suggestion-result');
         const btnReset = document.getElementById('btn-reset');
@@ -227,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             form.closest('.main-generator').classList.add('hidden');
             resultSection.classList.remove('hidden');
-            
+
             setTimeout(() => {
                 resultSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }, 100);
@@ -247,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const rec3 = document.getElementById('rec3-closet');
     const toast = document.getElementById('toast');
     const btnUndo = document.getElementById('btn-undo');
-    
+
     if (rec1 && rec2 && rec3) {
         let draggedItem = null;
         let lastRemovedBoxes = [];
@@ -265,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     draggedItem = null;
                 }, 0);
             });
-            
+
             // Regra Híbrida para Mobile: Clicar substitui a necessidade de arrastar!
             box.addEventListener('click', function() {
                 if (this.parentElement === rec1) {
@@ -305,10 +306,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (rec1.children.length > 0) {
                 // Salva estado para botão de desfazer
                 lastRemovedBoxes = Array.from(rec1.children);
-                
+
                 // Remove visualmente movendo massivamente para rec3
                 lastRemovedBoxes.forEach(box => rec3.appendChild(box));
-                
+
                 // Exibe o Toast animado de Notificação
                 toast.classList.remove('hidden');
                 clearTimeout(toastTimeout);
@@ -340,7 +341,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 styleResult.classList.remove('hidden');
             });
         }
-        
+
         // Botão Oculto disfarçado do lado do manequim
         if (btnReload) {
             btnReload.addEventListener('click', () => {
