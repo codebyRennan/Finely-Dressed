@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finely Dressed | Expansão</title>
+    <meta name="description" content="Seu closet virtual para expandir e gerenciar estilos.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="glow-blob top-left"></div>
+    <div class="glow-blob bottom-right"></div>
+
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <span class="gradient-text">Finely Dressed</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="Finely-Dressed.html">Início</a></li>
+                <li><a href="#generator">Como Funciona</a></li>
+                <li>
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Alternar Tema" title="Alternar Modo Escuro/Claro">
+                        <span class="icon-moon">🌙</span>
+                        <span class="icon-sun">☀️</span>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content expansion-content">
+        <!-- Retângulo Central Vazio (Estado Climático) -->
+        <div class="glass-card weather-placeholder">
+            <p>ESTADO CLIMÁTICO ATUAL</p>
+        </div>
+
+        <div class="expansion-layout-wrapper">
+            <!-- Layout 4 retângulos -->
+            <div class="closet-container">
+                <!-- Retangulo 1: Guarda-roupa Escolhido -->
+                <div class="closet-column col-main" id="rec1-chosen">
+                    <!-- Caixas entram aqui dinamicamente -->
+                </div>
+
+                <!-- Retangulo 2: Coletor / Devolvedor -->
+                <div class="closet-column col-narrow" id="rec2-collector" title="Clique para devolver todas as roupas">
+                    <!-- Área de drop / clique -->
+                </div>
+
+                <!-- Retangulo 3: Closet Origem -->
+                <div class="closet-column col-source" id="rec3-closet">
+                    <!-- Caixas simulando as roupas -->
+                    <div class="clothing-box" draggable="true" data-id="1">Caixa Vazia</div>
+                    <div class="clothing-box" draggable="true" data-id="2">Caixa Vazia</div>
+                    <div class="clothing-box" draggable="true" data-id="3">Caixa Vazia</div>
+                    <div class="clothing-box" draggable="true" data-id="4">Caixa Vazia</div>
+                    <div class="clothing-box" draggable="true" data-id="5">Caixa Vazia</div>
+                    <div class="clothing-box" draggable="true" data-id="6">Caixa Vazia</div>
+                    <div class="clothing-box" draggable="true" data-id="7">Caixa Vazia</div>
+                    <div class="clothing-box" draggable="true" data-id="8">Caixa Vazia</div>
+                    <div class="clothing-box" draggable="true" data-id="9">Caixa Vazia</div>
+                    <div class="clothing-box" draggable="true" data-id="10">Caixa Vazia</div>
+                    <div class="clothing-box" draggable="true" data-id="11">Caixa Vazia</div>
+                    <div class="clothing-box" draggable="true" data-id="12">Caixa Vazia</div>
+                </div>
+
+                <!-- Retangulo 4: Estilo Ideal -->
+                <div class="closet-column col-style" id="rec4-style">
+                    <button class="btn-reveal" id="btn-reveal-style">Revelar Estilo</button>
+                    <div class="style-result hidden" id="style-result">
+                        <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Suporte de Estilo">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botão lateral de reload -->
+            <div class="reload-style-wrapper">
+                <button class="text-btn outline-pulse" id="btn-reload-style">
+                    Não gostou do estilo<br>de agora? Tente Outro
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="toast hidden">
+        <span>Roupas devolvidas ao closet</span>
+        <button class="btn-undo" id="btn-undo">Desfazer</button>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Finely Dressed. Amplie seus horizontes.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
