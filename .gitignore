@@ -1,1 +1,15 @@
 desktop.ini
+.env
+.env.*
+*.env
+node_modules/
+/client/node_modules/
+/server/node_modules/
+dist/
+build/
+/client/dist/
+logs
+*.log
+npm-debug.log*
+.DS_Store
+.vscode/

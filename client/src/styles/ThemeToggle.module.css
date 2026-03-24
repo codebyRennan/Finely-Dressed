@@ -1,0 +1,9 @@
+.toggle {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid var(--surface-border);
+  background: var(--surface-color);
+  color: var(--text-main);
+  font-size: 1.1rem;
+}

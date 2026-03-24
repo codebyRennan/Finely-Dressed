@@ -1,0 +1,65 @@
+.header {
+  width: min(1180px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 1.5rem 0;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.link,
+.activeLink {
+  color: var(--text-muted);
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.activeLink {
+  color: var(--text-main);
+}
+
+.userName {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.logoutButton {
+  padding: 0.75rem 1rem;
+  border-radius: 14px;
+  border: 1px solid var(--surface-border);
+  background: transparent;
+  color: var(--text-main);
+}
+
+@media (max-width: 768px) {
+  .navbar,
+  .actions {
+    flex-direction: column;
+  }
+
+  .links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

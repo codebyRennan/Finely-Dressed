@@ -1,0 +1,35 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  width: min(760px, 100%);
+  padding: 2rem;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.form :global(.field:last-of-type) {
+  grid-column: 1 / -1;
+}
+
+.form :global(.primary-button) {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 768px) {
+  .form {
+    grid-template-columns: 1fr;
+  }
+}
